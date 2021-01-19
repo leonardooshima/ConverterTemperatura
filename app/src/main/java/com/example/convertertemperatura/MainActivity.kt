@@ -25,9 +25,19 @@ class MainActivity : AppCompatActivity() {
         fahreinheitRadio = findViewById(R.id.fahreinheitRadio)
 
         converterButton = findViewById(R.id.converterButton)
+        converterButton.setOnClickListener{ converter(it) }
     }
 
     fun converter(view: View){
+        var temp: Double = editText.text.toString().toDouble()
+
+        if(celsiusRadio.isChecked){
+            temp = (temp-32) * 5/9
+        } else if (fahreinheitRadio.isChecked){
+            temp = temp * 9/5 + 32
+        }
+
+        editText.setText(temp.toString())
 
     }
 }
